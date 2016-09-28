@@ -119,11 +119,14 @@ public class Bank {
 		println("Enter new user password: ");
 		String password = readString();
 		
+		userArray[id] = new User(name, password);
+		Account account = new Account(0,id);
 		
+		/* we had this before
 		userArray[id] = new User();
 		userArray[id].setAccountId(id);
 		userArray[id].setPassword(password);
-		userArray[id].setName(name);
+		userArray[id].setName(name);*/
 		
 		id++;
 		

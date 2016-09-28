@@ -18,12 +18,8 @@ public class User {
 	
 	private String name; //a String representing the username
 	private String password; //a String representing the password
-	private int accountId; // an Account representing the account
-	
-	public User(){
-		this.name = null;
-		this.password = null;
-		this.accountId = 0;
+	private int accountId;
+	private Account account; // an Account representing the account
 	}
 	
 	public User(String name, String password, int accountId) {
@@ -32,16 +28,23 @@ public class User {
 		this.accountId = accountId;
 	}
 	
+	public User(String name, String password,Account account) {
+	       this.name = name;
+	       this.password = password;
+	       this.account = account;
+	   }
+
+	
 	/**
 	* Returns the account id
 	* @return id
 	*/
 	public int getId() {
-		return this.accountId;
+		return this.account;
 	}
 	
 	public void setAccountId(int id){
-		this.accountId = id;
+		this.account = id;
 	}
 	
 	/**
@@ -73,6 +76,7 @@ public class User {
 	
 	
 	public Account getAccount() {
+		return null; //fix alla
 	   
 	
 	}

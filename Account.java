@@ -12,17 +12,17 @@ public class Account {
 		// amount: the account balance
 		// constructor with parameters
 	
-	private int id;
+	private int accoutid;
 	private double amount;
 	
 	public Account(){
-	this.id = 0;
+	this.accountId = 0;
 	this.amount = 0;
 	}
 	
 	
 	public Account(int amount, int id) {
-	this.id = id;
+	this.accountId = id;
 	this.amount = amount;
 	}
 	
@@ -35,6 +35,7 @@ public class Account {
 	* @return true if the withdraw succeeds, false otherwise
 	*/
 	public boolean withdraw(int deductAmount){
+		return true;
 
 	}
 	 
@@ -46,6 +47,8 @@ public class Account {
 	*/
 	 
 	public boolean deposit(int addAmount){
+		//code here
+		return true;
 		
 	}
 	/**
@@ -57,6 +60,7 @@ public class Account {
 	*/
 	public boolean transferMoney(User B,int amountToTransfer){
 	// code here
+		return true;
 	}
 	/**
 	* Returns the balance and records the transaction
@@ -64,15 +68,14 @@ public class Account {
 	*/
 	public int getAmount() {
 	// here code
+		return amount;
 	}
 	/**
 	* Returns the account id
 	* @return id
 	*/
 	public int getId(){
-	return id;
+	return accountId;
 	}
-	
-
 	
 }

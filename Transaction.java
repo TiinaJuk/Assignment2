@@ -26,15 +26,16 @@ public class Transaction {
 	* Returns the Account object
 	* @return account
 	*/
-	
 	public Account getAccount() {
 	// code here
+		return null;
 	}
 	/**
 	* String representation of a transaction
 	*/
 	public String toString() {
 	// code here
+		return null;
 	}
 	}
 }
