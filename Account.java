@@ -6,7 +6,7 @@ public class Account {
 	* This class implements a user account, represented by a user id
 	* (unique for each account) and an amount (or balance)
 	*/
-	
+	//testing git hub
 	// private instance variables
 		// id: an integer representing the account id
 		// amount: the account balance
