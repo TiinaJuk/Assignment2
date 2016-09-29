@@ -3,7 +3,7 @@ package dit948;
 public class Account {
 
 	/**
-	 * im smarter than you
+	 * Thank you!
 	* This class implements a user account, represented by a user id
 	* (unique for each account) and an amount (or balance)
 	*/
