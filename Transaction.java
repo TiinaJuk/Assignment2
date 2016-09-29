@@ -13,7 +13,8 @@ public class Transaction {
 	// type: a String to record the type of transaction
 	// account: an Account used by the transaction
 	// constructor with parameters
-	
+	//check if working
+
 	private String type; //to record the type of transaction
 	private Account account; // an Account used by the transaction
 	

@@ -11,6 +11,7 @@ import static dit948.Random.*;
 */
 
 public class BankMain {
+	//check if working
 
    public static void main(String[] args) {
 

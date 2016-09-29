@@ -1,8 +1,11 @@
 package dit948;
 /**
 * Created by Carl on 26/09/2016.
+
 */
 
+
+//check if working
 import static dit948.SimpleIO.*;
 import static dit948.Random.*;
 

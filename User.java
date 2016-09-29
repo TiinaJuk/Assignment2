@@ -8,8 +8,8 @@ public class User {
 	* This class represents the data for a user of the bank
 	*/
 	// private instance variables
-	//9
-	//DIT948-2016, Assignment 2
+	//check if working
+
 	// name: a String representing the username
 	// password: a String representing the password
 	// account: an Account representing the account
