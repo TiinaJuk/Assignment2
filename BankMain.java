@@ -11,7 +11,6 @@ import static dit948.Random.*;
 */
 
 public class BankMain {
-	//check if working
 
    public static void main(String[] args) {
 
@@ -21,6 +20,7 @@ public class BankMain {
        // online banking system.
 
        println("Welcome to the DIT948 online bank");
+    
        do{
            println("Main menu");
            println("1: Create user account");
@@ -35,19 +35,67 @@ public class BankMain {
                case 1:
             	  Bank.addUser();
             	 
+            	  break;
+            	 
                case 2:
             	   
             	   //Login as user
-            	   	println("Enter a username:");
+            	   int n=2; //key for getting to submenu
+            	   
+            	lab1: while (n!=4) {
+            		
+            		/*println("To go back to Main Menu press q.");
+    	   		 		if(readChar() == 'q'){
+    	   		 			n=4;
+    	   		 		}*/
+    	   		 	
+            		println("Enter a username:");
             	   	String name = readString();
-            	   	println("Enter a password:");
+            	 	         	   	
+            		User[]tmp=new User[1];
+    	   			tmp[0] = Bank.getUserByUsr(name);
+    	   			println(Bank.getUserByUsr(name));
+            	   
+              	   	// CHECK THIS LATER!
+              	//if wrong username 
+            	   	if(tmp[0] == null){
+            	   		break lab1;
+            	   		}
+
+            	   	else{ 
+            	   		
+            	 	println("Enter a password:");
             	   	String password = readString();
+              	   	
+            	   	// CHECK THIS LATER!
+            	   	//call a method that checks the password
+            	   		
+            	   			User[]tmp2=new User[1];
+            	   			tmp2[0] = Bank.getUserFromUsrPwd(name,password);
+            	   				
+            	   			//if wrong password
+            	   				if(tmp2[0] == null){
+            	   					break lab1;
+            	   				}
+            	   				
+            	   				else{
+            	   					n=4;
+            	   				}
             	   	
-            	   	//check the password
-            	   	// loop for getting right one
-   
+            	   		} 
+            	   	
+            	}
             	   
+            	   int aubAction;
+            
+             	   	// CHECK THIS LATER! Eli jos laittaa Q niin pit‰‰ menn‰ Main Menu eik‰ Sub Menu
+            	/*   if (){
+            		 aubAction  
+            	   }
             	   
+            	   else{*/
+            	//   int currentId = tmp2[0].userId;
+            		   
             	   do{
 
                        println("SubMenu");
@@ -58,44 +106,66 @@ public class BankMain {
                        println("5: Transfer to other account");
                        println("6: Close user session");
 
-                       int aubAction = readInt();
+                       aubAction = readInt();
+                       
 
-                           switch(aubAction)
-                           {
+                           switch(aubAction)  {
                                    case 1:
-                                	   //Check balance
+                                	   println("The balance is:" + Account.getAmount(0));
+                                	         
+                                 	  break;
+
                                    case 2:
                                 	   //Deposit
+                                 	  break;
+
                                    case 3:
                                 	   //Withdraw
+                                 	  break;
+
                                    case 4:
                                 	   //List of transactions
+                                 	  break;
+
                                    case 5:
                                 	   //Transfer to other account
+                                 	  break;
+
                                    case 6:
-                                	   //Close user session
+                                	  println("");
+                                	  break;
+
                                    default:
                                        println("Enter a number between 1 and 6");
-
-                                           }
-
-            	   	}while(true);
-
+                                       			
+                           }
+  
+            	   	} while(aubAction!=6);
+            	   		
                case 3:
             	   //Huomaa!
-            	   Bank.toString();
+            	   //Error!
+        
             	   
- 
+             	  break;
+
                case 4:
                //Exit
+            	   
+             	  break;
+
                default:
                println("Enter a number between 1 and 4");
 
-   }
+   } // switch
 
-   }while (true);// FIXTHIS
+  }while (true);// FIXTHIS
+       
+   } //class
+   
 }
 
-}
+
+
 
 

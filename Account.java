@@ -3,7 +3,6 @@ package dit948;
 public class Account {
 
 	/**
-	 * Thank you!
 	* This class implements a user account, represented by a user id
 	* (unique for each account) and an amount (or balance)
 	*/
@@ -13,7 +12,7 @@ public class Account {
 		// amount: the account balance
 		// constructor with parameters
 	
-	private int accoutid;
+	private int accountId;
 	private double amount;
 	
 	public Account(){
@@ -36,8 +35,9 @@ public class Account {
 	* @return true if the withdraw succeeds, false otherwise
 	*/
 	public boolean withdraw(int deductAmount){
+		amount = amount - deductAmount;
+		//code here
 		return true;
-
 	}
 	 
 	/**
@@ -48,6 +48,7 @@ public class Account {
 	*/
 	 
 	public boolean deposit(int addAmount){
+		amount = amount + addAmount;	
 		//code here
 		return true;
 		
@@ -67,16 +68,25 @@ public class Account {
 	* Returns the balance and records the transaction
 	* @return amount
 	*/
-	public int getAmount() {
-	// here code
-		return amount;
+	public static double getAmount(int currentId) {
+		return User.getAccount(currentId).amount;		
 	}
+	
+	public void setAmount(double amount) {
+		this.amount = amount;
+	}
+	
+	
 	/**
 	* Returns the account id
 	* @return id
 	*/
 	public int getId(){
-	return accountId;
+	return this.accountId;
 	}
+	
+	public void setId(int currentId){
+		this.accountId = currentId;
+		}
 	
 }

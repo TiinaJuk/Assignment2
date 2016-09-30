@@ -9,12 +9,9 @@ public class Transaction {
 	* This class implements a transaction performed by the bank users
 	*/
 	
-	// private instance variables
-	// type: a String to record the type of transaction
-	// account: an Account used by the transaction
-	// constructor with parameters
-	//check if working
 
+	// constructor with parameters
+	
 	private String type; //to record the type of transaction
 	private Account account; // an Account used by the transaction
 	
@@ -38,5 +35,5 @@ public class Transaction {
 	// code here
 		return null;
 	}
-	}
+	
 }
