@@ -68,8 +68,8 @@ public class Account {
 	* Returns the balance and records the transaction
 	* @return amount
 	*/
-	public static double getAmount(int currentId) {
-		return User.getAccount(currentId).amount;		
+	public double getAmount(int id) {
+		return this.amount;		
 	}
 	
 	public void setAmount(double amount) {

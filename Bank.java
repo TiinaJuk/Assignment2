@@ -82,13 +82,18 @@ public class Bank {
         */
        public static User getUserFromUsrPwd(String u, String p) {
     	   for(int i=0; i < userArray.length; i++){
-   	   		if ((userArray[i].getUsername().equals(u)) && (userArray[i].getPassword().equals(p))){
-   		   		println("You are logged in!"); 
-   	   			return userArray[i]; 
+   	   			if ((userArray[i].getUsername().equals(u)) && (userArray[i].getPassword().equals(p))){
+   	   				println("You are logged in!"); 
+   	   				return userArray[i];
+   	   			
      		  }  
+   	   		
+   	   		else{
+   	   		 println("Wrong password, please enter again: ");	
+   	   	 		}
      		  
     	   }
-    	   println("Wrong password, please enter again: ");	
+    	  
     	   return null;
        }
        /**
@@ -100,17 +105,17 @@ public class Bank {
         */
 
        public static User getUserByUsr(String u) {
-    	  for(int i=0; i < userArray.length; i++){
+    	 
+    	   for(int i=0; i < userArray.length; i++){  		  
     		  if(userArray[i].getUsername().equals(u)){
-    			  return userArray[i]; 
+    			 return userArray[i];
     		  }  
-    	
+    	 
+    		  else{
+    			  println("Username doesn't exist, please enter a valid username");   		
+    		  }   	  
     	  }
-    	  
-    	  println("Username doesn't exist, please enter a valid username");
-    	  User[]tmp=new User[1];
-    	  tmp[0]=null;
-    	  return tmp[0];
+    	  return null;
     	 
        }
        

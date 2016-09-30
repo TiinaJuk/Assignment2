@@ -12,31 +12,14 @@ public class User {
 	
 	private String name; //a String representing the username
 	private String password; //a String representing the password
-	private int userId;
-	private static Account[] account = new Account[100]; // an Account representing the account
+	private int accountId;
+	Account account; // an Account representing the account
 	
-	/*public User(String name, String password, int accountId) {
-		this.name = name;
-		this.password = password;
-		this.accountId = accountId; }*/
-	
-	public User() {
-	       this.name = "";
-	       this.password = "";
-	       this.userId = 0;
-	     
-	       for(int i=0; i<account.length; i++){
-	    	   account[i] = new Account(0,0);
-	       }
-	   }
-
 	
 	public User(String name, String password, int id) {
 	       this.name = name;
 	       this.password = password;
-	       this.userId = id;
-	       account[id] = new Account(0,id);
-	    	        
+	       this.accountId = id;
 	   }
 
 	
@@ -45,11 +28,11 @@ public class User {
 	* @return id
 	*/
 	public int getId() {
-		return this.userId;
+		return this.accountId;
 	}
 	
 	public void setUserId(int id){
-		this.userId = id;
+		this.accountId = id;
 	}
 	
 	/**
@@ -78,15 +61,9 @@ public class User {
 	* Returns the user Account
 	* @return account
 	*/
-	
-	
-	public static Account getAccount(int id) {
-		return account[id];
 		
-		//	accountArray[id] = new Account(0,id);
-	   
-	
+	public Account getAccount(int id) {
+		
+		return account;		
 	}
-
-	
 }

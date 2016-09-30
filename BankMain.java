@@ -42,59 +42,45 @@ public class BankMain {
             	   //Login as user
             	   int n=2; //key for getting to submenu
             	   
-            	lab1: while (n!=4) {
-            		
-            		/*println("To go back to Main Menu press q.");
-    	   		 		if(readChar() == 'q'){
-    	   		 			n=4;
-    	   		 		}*/
+            	  logInUserCheck: while (n!=4) {
     	   		 	
             		println("Enter a username:");
             	   	String name = readString();
-            	 	         	   	
-            		User[]tmp=new User[1];
-    	   			tmp[0] = Bank.getUserByUsr(name);
-    	   			println(Bank.getUserByUsr(name));
+            	   	
+            	 	
+            	   	
+            	   	User currentUser = Bank.getUserByUsr(name);
+            	   	println(currentUser);
             	   
-              	   	// CHECK THIS LATER!
-              	//if wrong username 
-            	   	if(tmp[0] == null){
-            	   		break lab1;
-            	   		}
-
-            	   	else{ 
+            	   	//Getting the ID of the logged in user
+            	   	int LoggedInId = currentUser.getId();
+            	   	
+            	   	if(currentUser == null){	
+            	   		break logInUserCheck;
             	   		
-            	 	println("Enter a password:");
-            	   	String password = readString();
+            	   	}
+            	   		
+            		else{   	 
+            	   		println("Enter a password:");
+            	   		String password = readString();
               	   	
-            	   	// CHECK THIS LATER!
-            	   	//call a method that checks the password
             	   		
-            	   			User[]tmp2=new User[1];
-            	   			tmp2[0] = Bank.getUserFromUsrPwd(name,password);
-            	   				
-            	   			//if wrong password
-            	   				if(tmp2[0] == null){
-            	   					break lab1;
-            	   				}
-            	   				
-            	   				else{
-            	   					n=4;
-            	   				}
-            	   	
-            	   		} 
-            	   	
-            	}
+            	   		currentUser = Bank.getUserFromUsrPwd(name,password);
+            	   			if(currentUser == null) {
+            	   				break logInUserCheck;
+            	   			}//if
             	   
-            	   int aubAction;
+            	   			else{
+            	   				
+            	   			} //else
+               	   	} //else
+            	   	         	   	
+         	   
+            	 //  int aubAction;
             
-             	   	// CHECK THIS LATER! Eli jos laittaa Q niin pit‰‰ menn‰ Main Menu eik‰ Sub Menu
-            	/*   if (){
-            		 aubAction  
-            	   }
+             	   	// CHECK THIS LATER! Eli jos laittaa Q niin pit‰‰ menn‰ Main Menu eik‰ Sub Menu, k‰yt‰ subactionia do while loopissa ni onnistuu
+            	
             	   
-            	   else{*/
-            	//   int currentId = tmp2[0].userId;
             		   
             	   do{
 
@@ -106,14 +92,13 @@ public class BankMain {
                        println("5: Transfer to other account");
                        println("6: Close user session");
 
-                       aubAction = readInt();
-                       
-
-                           switch(aubAction)  {
+                       int subAction = readInt();
+                        
+                           switch(subAction)  {
                                    case 1:
-                                	   println("The balance is:" + Account.getAmount(0));
-                                	         
-                                 	  break;
+                                	// println("The balance is:" + Account.getAmount(LoggedInId));
+                                	 // userArray[LoggedInId]
+                                	  break;
 
                                    case 2:
                                 	   //Deposit
@@ -138,9 +123,11 @@ public class BankMain {
                                    default:
                                        println("Enter a number between 1 and 6");
                                        			
-                           }
+                           		} //switch
   
-            	   	} while(aubAction!=6);
+            	   } while(true);
+            	   
+            	  }//while
             	   		
                case 3:
             	   //Huomaa!
@@ -160,10 +147,12 @@ public class BankMain {
    } // switch
 
   }while (true);// FIXTHIS
-       
-   } //class
+ 
+   }
    
-}
+ } //class
+   
+       
 
 
 
