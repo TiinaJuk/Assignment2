@@ -74,9 +74,8 @@ public class BankMain {
                         // CHECK THIS LATER! Eli jos laittaa Q niin pitää mennä Main Menu eikä Sub Menu, käytä subactionia do while loopissa ni onnistuu
 
                         //Getting there Account object from the currentUser object and store the account object in the "currentAccount"
-                        Account currentAccount = Bank.getUserByUsr(name).getAccount();
+                        Account  currentAccount = Bank.getUserByUsr(name).getAccount();
                         //User is now logged in and can preform the following SubMenu actions on there account
-
                         do{
 
                             println("SubMenu");
@@ -94,7 +93,6 @@ public class BankMain {
                             switch(subAction)  {
                                 case 1:
                                     println("The balance is:" + currentAccount.getAmount());
-                                    println("^that right there means our code is working, enjoy ur sunday=))))))");
 
                                     break;
 
@@ -112,6 +110,8 @@ public class BankMain {
                                     println("Please enter an amount to withdraw");
                                     double withdrawAmount = readDouble();
                                     currentAccount.withdraw(withdrawAmount);
+                                    println(withdrawAmount + " has been successfully withdrawn from your account");
+
                                     break;
 
                                 case 4:

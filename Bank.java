@@ -9,7 +9,6 @@ public class Bank {
 
 	public static int id =0;
 	private static User[] userArray = new User[100];
-	//private static Account[] accountArray = new Account [100];
 	public static Transaction[] transArray = new Transaction[100];
 
 
@@ -18,7 +17,7 @@ public class Bank {
 	 * array of transactions are used to keep track of users and transactions
 	 * Note: you are allowed to use ArrayLists, but you dont need to
 	 */
-  /*    
+  /*
        /**
         * Checks whether a user is present in the User array, given the username
         * and the password
@@ -26,7 +25,7 @@ public class Bank {
         * @param u username
         * @param p password
         * @return true or false, accordingly
-        
+
        */
 
 
@@ -138,7 +137,7 @@ public class Bank {
 			ans = existsUserByUsernamePwd (name, password);
 
 			if(ans == true){
-				userArray[id] = new User(name,password,id);
+				userArray[id] = new User(name,password);
 
 				id++;
 

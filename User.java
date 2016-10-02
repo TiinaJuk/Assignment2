@@ -14,10 +14,10 @@ public class User {
 	Account account; // an Account representing the account
 
 
-	public User(String name, String password, int accountid) {
+	public User(String name, String password) {
 		this.name = name;
 		this.password = password;
-		this.account = new Account(0,id);
+		this.account = new Account(0);
 	}
 
 
