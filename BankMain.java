@@ -2,14 +2,9 @@ package dit948;
 
 import static dit948.SimpleIO.*;
 
-//Can log in only with first account
-//Why have to return null - doesnt work
-//Bank glass checking password, Q doesnt work
-//Money transfer errors in class Account
 //List of transactions
 //Class transaction
 //Username list
-//Exit the bank
 
 
 
@@ -52,31 +47,36 @@ public class BankMain {
 
                    logInUserCheck: while(true) {
               
-                      //Getting the User object from the arrray and store the logged in user in "currentUser"
+                      //Getting the User object from the array and store the logged in user in "currentUser"
                        println("Enter a username:");
                        String name = readString();
 
                        //Getting the User object from the arrray and store the logged in user in "currentUser"
                        User currentUser = Bank.getUserByUsr(name);
 
-                       if(currentUser == null) {
-                           break logInUserCheck;
-                       }
-
-                        else{
+                       //current user should be an object
+                      
+                       if(currentUser != null) {
+                           
                             println("Enter a password:");
                             String password = readString();
 
                             currentUser = Bank.getUserFromUsrPwd(name,password);
-                            if(currentUser == null) {                           	
-                            				break logInUserCheck;
-                            		
+                          
+                            if(currentUser != null) {                           	
+                            				                        		
                             }//if
 
                             else{
-                            } //else
-                        } //else
-                        
+                            	break logInUserCheck;
+                            } 
+                       }
+                       
+                         else{
+                        	 break logInUserCheck;
+                            
+                       
+                       }
                    
                         //Getting there Account object from the currentUser object and store the account object in the "currentAccount"
                        Account currentAccount = Bank.getUserByUsr(name).getAccount();
@@ -131,22 +131,10 @@ public class BankMain {
                                     break;
 
                                 case 5:
-                                	//Transfer to another account
-                                	println("Enter the username of the recepient: ");
-                                	String userName = readString();
+                                	//Transfer to another account                           	
                                 	
-                                	println("Please enter an amount: ");
-                                	double transferAmount = readDouble();
-                                	
-                                	boolean answer2 = Account.transferMoney(userName,transferAmount);
-                                	if(answer2=true){
-                                	println("Transfer is made succesfully to account" + name);	
-                                	}
-                                	else{
-                                		
-                                	}	
-                                	
-                                    break;
+                                	boolean answer2 = Account.transferMoney(currentAccount);
+                                	break;
 
                                 case 6:
                                     break inMainMenu;
@@ -163,17 +151,15 @@ public class BankMain {
                    break;
                    
                 case 3:
-                	//String answer = Bank.toString(); 
+                	Bank.toString(); 
 
-
-                    break;
+                  break;
 
                 case 4:
                 	//Exit
                 	println("Thank you and Welcome back!");      
-             	   //Error
+             	   	System.exit(0);
                 	
-
                     break;
 
                 default:

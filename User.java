@@ -37,10 +37,8 @@ public class User {
 	 * @return name
 	 */
 	public String getUsername() {
-
 		return this.name;
 	}
-
 
 	/**
 	 * Returns the password

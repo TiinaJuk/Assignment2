@@ -1,6 +1,9 @@
 package dit948;
 
 import static dit948.Bank.id;
+import static dit948.SimpleIO.println;
+import static dit948.SimpleIO.readDouble;
+import static dit948.SimpleIO.readString;
 
 public class Account {
 
@@ -65,22 +68,29 @@ public class Account {
 	 * @param amountToTransfer the amount to transfer
 	 * @return true if the transfer is possible, false otherwise
 	 */
-	public static boolean transferMoney(String name,double amountToTransfer){
-		User [] tmp = new User[1];
-		tmp [0] = Bank.getUserArray(name);
-		
-		if(amountToTransfer < amount){
-		tmp[0].amount = (tmp[0].amount + amountToTransfer);
-		amount = amount - amountToTransfer;
-		return true;
-		}
-		
-		else{
-			
-		}
-		return false;		
-	}
+	public static boolean transferMoney(Account currentAccount){
+		println("Enter the username of the recepient: ");
+    	String receptantUsername = readString();
+    	
+    	println("Please enter an amount: ");
+    	double transferAmount = readDouble();
 
+		User receptanterObj = Bank.getUserArray(receptantUsername);
+		
+		if(receptanterObj == null){
+			println("User doesn't exist.");
+			return false;
+		}
+		
+		// deposit to reseptanter's account 
+		Account receptanterAccount = receptanterObj.getAccount();
+		receptanterAccount.deposit(transferAmount);
+		
+		//withdraw from Useraccount
+		currentAccount.withdraw(transferAmount);
+		println("An amount of: " +transferAmount+ "has been transfered");
+		return true;
+	}
 
 	public void setAmount(double amount) {
 

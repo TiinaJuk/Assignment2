@@ -7,7 +7,6 @@ public class Bank {
 
 	public static int id =0;
 	private static User[] userArray = new User[100];
-	//private static Account[] accountArray = new Account [100];
 	public static Transaction[] transArray = new Transaction[100];
 
 
@@ -28,10 +27,16 @@ public class Bank {
        */
 
 	public static User getUserArray(String name){
-		//how to get userArray which username is name
-		int n = 0;
 		
-		return userArray[n];
+		for(int i=0; i<id;i++){
+			if (userArray[i].getUsername().equals(name)) {
+				return userArray[i];	
+			}
+			
+			else{				
+			}		
+		}		
+		return null;
 		}
 	
 	public static void setUserArray(int n, User tmp){
@@ -56,28 +61,14 @@ public class Bank {
 	 * String representation of the list of users of the
 	 * online bank
 	 */
-	// is this the way to do this? why not only use a void method and a loop
 
-
-	public String toString() {
-
-
-		for(int i = 0; i > userArray.length; i++) {
-			println(userArray[i].getUsername());
-
-		}
-		String ready = "Ready!";
-		return ready;
-
-           /*
-           V2
-           String  userNameList;
-           for(int i = 0; i > userArray.length; i++) {
-               userNameList = userNameList+ ", " + userArray[i];
-
-
-           }
-           */
+	public static String toString() {
+		String list = null;
+		
+		for(int i = 0; i > id; i++) {
+			list = list + userArray[i].getUsername() + "\n";
+		}			
+		return list;
 	}
 
 	/**
@@ -105,7 +96,7 @@ public class Bank {
 				println("Wrong password, please enter again. Press Q to exit. ");
 				pass = readString();
 		//if Q or q, then exit				
-					if((pass.equals('Q')) || (pass.equals('q'))){
+					if(pass.equalsIgnoreCase("q")){
 					println("Exit!");
 					return null;	
 					}		
@@ -122,15 +113,16 @@ public class Bank {
 
 	public static User getUserByUsr(String u) {
 
-		for(int i=0; i < userArray.length; i++){
+		for(int i=0; i < id; i++){
 			if(userArray[i].getUsername().equals(u)){
 				return userArray[i];
 			}
 
 			else{
-				println("Username doesn't exist.");
+				
 			}
 		}
+		println("Username doesn't exist.");
 		return null;
 
 	}
@@ -155,14 +147,17 @@ public class Bank {
 			ans = existsUserByUsernamePwd (name, password);
 
 			if(ans == true){
-				userArray[id] = new User(name,password,id);
+				userArray[id] = new User(name,password);
 
-				id++;
+				
 
 
 				println("New user succesfully created!");
 				println("Your username is: " + name);
 				println("Your password is: " + password);
+				println("Your id is: " + id);
+					
+						id++;
 			}
 
 			else if (ans == false){

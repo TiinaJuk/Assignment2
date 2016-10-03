@@ -7,7 +7,6 @@ public class Transaction {
 	 * This class implements a transaction performed by the bank users
 	 */
 
-
 	// constructor with parameters
 
 	private String type; //to record the type of transaction
