@@ -3,8 +3,6 @@ package dit948;
 public class Transaction {
 
 
-
-
 	/**
 	 * This class implements a transaction performed by the bank users
 	 */
@@ -32,7 +30,7 @@ public class Transaction {
 	 * String representation of a transaction
 	 */
 	public String toString() {
-		// code here
+		//code here			
 		return null;
 	}
 

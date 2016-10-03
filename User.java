@@ -2,6 +2,8 @@ package dit948;
 
 import static dit948.Bank.id;
 
+
+
 public class User {
 	/**
 	 * This class represents the data for a user of the bank

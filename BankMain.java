@@ -2,6 +2,17 @@ package dit948;
 
 import static dit948.SimpleIO.*;
 
+//Can log in only with first account
+//Why have to return null - doesnt work
+//Bank glass checking password, Q doesnt work
+//Money transfer errors in class Account
+//List of transactions
+//Class transaction
+//Username list
+//Exit the bank
+
+
+
 /**
  * Class representing a online banking application for the second assignment of
  * DIT948, 2016 edition. This is the main class for the application, interacting
@@ -14,7 +25,6 @@ public class BankMain {
     public static void main(String[] args) {
 
         Bank bank = new Bank();
-
         // Implement here the interaction between the user and the
         // online banking system.
 
@@ -30,53 +40,49 @@ public class BankMain {
 
             int action = readInt();
 
-            switch(action) {
+     inMainMenu:  switch(action) {
                 case 1:
-                    Bank.addUser();
-
-                    break;
-
+               Bank.addUser();
+                    
+                break;
+                
                 case 2:
                     //case 2: Login as user
+                	
 
-                    int n=2; //key for getting to submenu
+                   logInUserCheck: while(true) {
+              
+                      //Getting the User object from the arrray and store the logged in user in "currentUser"
+                       println("Enter a username:");
+                       String name = readString();
 
-                    logInUserCheck: while (n!=4) {
+                       //Getting the User object from the arrray and store the logged in user in "currentUser"
+                       User currentUser = Bank.getUserByUsr(name);
 
-                        println("Enter a username:");
-                        String name = readString();
-
-                        //Getting the User object from the arrray and store the logged in user in "currentUser"
-                        User currentUser = Bank.getUserByUsr(name);
-
-
-
-
-                        if(currentUser == null){
-                            break logInUserCheck;
-                        }
+                       if(currentUser == null) {
+                           break logInUserCheck;
+                       }
 
                         else{
                             println("Enter a password:");
                             String password = readString();
 
-
                             currentUser = Bank.getUserFromUsrPwd(name,password);
-                            if(currentUser == null) {
-                                break logInUserCheck;
+                            if(currentUser == null) {                           	
+                            				break logInUserCheck;
+                            		
                             }//if
 
                             else{
-
                             } //else
                         } //else
-
-                        // CHECK THIS LATER! Eli jos laittaa Q niin pitää mennä Main Menu eikä Sub Menu, käytä subactionia do while loopissa ni onnistuu
-
+                        
+                   
                         //Getting there Account object from the currentUser object and store the account object in the "currentAccount"
-                        Account  currentAccount = Bank.getUserByUsr(name).getAccount();
+                       Account currentAccount = Bank.getUserByUsr(name).getAccount();
                         //User is now logged in and can preform the following SubMenu actions on there account
-                        do{
+
+                       submenu: do{
 
                             println("SubMenu");
                             println("1: Check balance");
@@ -85,7 +91,6 @@ public class BankMain {
                             println("4: List of transactions");
                             println("5: Transfer to other account");
                             println("6: Close user session");
-
 
 
                             int subAction = readInt();
@@ -109,41 +114,65 @@ public class BankMain {
                                     //Withdraw
                                     println("Please enter an amount to withdraw");
                                     double withdrawAmount = readDouble();
-                                    currentAccount.withdraw(withdrawAmount);
-                                    println(withdrawAmount + " has been successfully withdrawn from your account");
-
+                                    boolean answer =currentAccount.withdraw(withdrawAmount);
+                                     if (answer == true){
+                                         println(withdrawAmount + " has been successfully withdrawed from your account");
+                                     }
+                                     
+                                     else{
+                                    	println("Invalid amount of withdraw, please try again!");
+                                     }
+                                    
                                     break;
 
                                 case 4:
-                                    //List of transactions
+                                	//List of transactions
+                                                  
                                     break;
 
                                 case 5:
-                                    //Transfer to other account
+                                	//Transfer to another account
+                                	println("Enter the username of the recepient: ");
+                                	String userName = readString();
+                                	
+                                	println("Please enter an amount: ");
+                                	double transferAmount = readDouble();
+                                	
+                                	boolean answer2 = Account.transferMoney(userName,transferAmount);
+                                	if(answer2=true){
+                                	println("Transfer is made succesfully to account" + name);	
+                                	}
+                                	else{
+                                		
+                                	}	
+                                	
                                     break;
 
                                 case 6:
-                                    println("");
-                                    break;
-
+                                    break inMainMenu;
+                                
                                 default:
                                     println("Enter a number between 1 and 6");
 
                             } //switch
 
                         } while(true);
-
-                    }//while
-
+                       
+                   } //while submenu
+               
+                   break;
+                   
                 case 3:
-                    //Huomaa!
-                    //Error!
+                	//String answer = Bank.toString(); 
 
 
                     break;
 
                 case 4:
-                    //Exit
+                	//Exit
+                	println("Thank you and Welcome back!");      
+             	   //Error
+                	
 
                     break;
 
@@ -152,7 +181,7 @@ public class BankMain {
 
             } // switch
 
-        }while (true);// FIXTHIS
+        }while (true);
 
     }
 

@@ -1,6 +1,5 @@
 package dit948;
 
-
 import static dit948.Bank.id;
 
 public class Account {
@@ -32,15 +31,20 @@ public class Account {
 	 * @param deductAmount the amount to withdraw
 	 * @return true if the withdraw succeeds, false otherwise
 	 */
-
+	
 	//how to reach the account of the logged in user to be able to compare that to deduct ammount?
 	//^is a problem if the withraw metod here has to return false if the deductamount is to big
 	//is it possible to identify an object by the value of one of its varibles such as account id?
 	//if not then how would the account id be used to identify the object? userObj could be found by name/ place in userArray
 	public boolean withdraw(double deductAmount){
-		amount = amount - deductAmount;
-		//code here
-		return true;
+		if(deductAmount<amount){
+		amount = amount - deductAmount;	
+		return true;}
+		
+		else {
+			
+		}
+		return false;
 	}
 
 	/**
@@ -52,9 +56,7 @@ public class Account {
 
 	public boolean deposit(double addAmount){
 		amount = amount + addAmount;
-		//code here
 		return true;
-
 	}
 	/**
 	 * Transfer money from this account to user B, and
@@ -63,9 +65,20 @@ public class Account {
 	 * @param amountToTransfer the amount to transfer
 	 * @return true if the transfer is possible, false otherwise
 	 */
-	public boolean transferMoney(User B,int amountToTransfer){
-		// code here
+	public static boolean transferMoney(String name,double amountToTransfer){
+		User [] tmp = new User[1];
+		tmp [0] = Bank.getUserArray(name);
+		
+		if(amountToTransfer < amount){
+		tmp[0].amount = (tmp[0].amount + amountToTransfer);
+		amount = amount - amountToTransfer;
 		return true;
+		}
+		
+		else{
+			
+		}
+		return false;		
 	}
 
 

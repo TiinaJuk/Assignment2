@@ -1,7 +1,5 @@
 package dit948;
-/**
- * Created by Carl on 26/09/2016.
- */
+
 
 import static dit948.SimpleIO.*;
 
@@ -9,6 +7,7 @@ public class Bank {
 
 	public static int id =0;
 	private static User[] userArray = new User[100];
+	//private static Account[] accountArray = new Account [100];
 	public static Transaction[] transArray = new Transaction[100];
 
 
@@ -17,7 +16,7 @@ public class Bank {
 	 * array of transactions are used to keep track of users and transactions
 	 * Note: you are allowed to use ArrayLists, but you dont need to
 	 */
-  /*
+  /*    
        /**
         * Checks whether a user is present in the User array, given the username
         * and the password
@@ -25,10 +24,20 @@ public class Bank {
         * @param u username
         * @param p password
         * @return true or false, accordingly
-
+        
        */
 
-
+	public static User getUserArray(String name){
+		//how to get userArray which username is name
+		int n = 0;
+		
+		return userArray[n];
+		}
+	
+	public static void setUserArray(int n, User tmp){
+		userArray[n] = tmp;
+		}
+	
 
 
 	public static boolean existsUserByUsernamePwd(String u, String p) {
@@ -79,20 +88,29 @@ public class Bank {
 	 * @return a User object or null
 	 */
 	public static User getUserFromUsrPwd(String u, String p) {
-		for(int i=0; i < userArray.length; i++){
-			if ((userArray[i].getUsername().equals(u)) && (userArray[i].getPassword().equals(p))){
+		String pass = p;
+		do{
+		
+		//checking the password
+		for(int i=0; i < id; i++){
+			if ((userArray[i].getUsername().equals(u)) && (userArray[i].getPassword().equals(pass))){
 				println("You are logged in!");
 				return userArray[i];
-
 			}
-
-			else{
-				println("Wrong password, please enter again: ");
+			
+			else{				
 			}
-
 		}
-
-		return null;
+		//if wrong password
+				println("Wrong password, please enter again. Press Q to exit. ");
+				pass = readString();
+		//if Q or q, then exit				
+					if((pass.equals('Q')) || (pass.equals('q'))){
+					println("Exit!");
+					return null;	
+					}		
+			
+		}while(true);
 	}
 	/**
 	 * Returns the User object associated with a given username
@@ -110,7 +128,7 @@ public class Bank {
 			}
 
 			else{
-				println("Username doesn't exist, please enter a valid username");
+				println("Username doesn't exist.");
 			}
 		}
 		return null;
@@ -137,7 +155,7 @@ public class Bank {
 			ans = existsUserByUsernamePwd (name, password);
 
 			if(ans == true){
-				userArray[id] = new User(name,password);
+				userArray[id] = new User(name,password,id);
 
 				id++;
 
