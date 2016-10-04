@@ -1,10 +1,9 @@
 package dit948;
 
+import static dit948.Bank.id;
+import static dit948.Bank.transArray;
 import static dit948.SimpleIO.*;
-
-//List of transactions
-//Class transaction
-
+import static dit948.Transaction.tranId;
 
 /**
  * Class representing a online banking application for the second assignment of
@@ -50,7 +49,7 @@ public class BankMain {
                        String name = readString();
 
                        //Getting the User object from the arrray and store the logged in user in "currentUser"
-                       User currentUser = Bank.getUserByUsr(name);
+                      User currentUser = Bank.getUserByUsr(name);
 
                        //current user should be an object
                       
@@ -59,7 +58,7 @@ public class BankMain {
                             println("Enter a password:");
                             String password = readString();
 
-                            currentUser = Bank.getUserFromUsrPwd(name,password);
+                           currentUser = Bank.getUserFromUsrPwd(name,password);
                           
                             if(currentUser != null) {                           	
                             				                        		
@@ -106,6 +105,9 @@ public class BankMain {
                                     currentAccount.deposit(depositeAmount);
                                     println(depositeAmount + " has been successfully deposited to your account");
 
+                                    transArray[Transaction.tranId] = new Transaction(currentAccount , "Deposit of:" +depositeAmount+"\n"  );
+                                    tranId++;
+
                                     break;
 
                                 case 3:
@@ -114,7 +116,12 @@ public class BankMain {
                                     double withdrawAmount = readDouble();
                                     boolean answer =currentAccount.withdraw(withdrawAmount);
                                      if (answer == true){
+
                                          println(withdrawAmount + " has been successfully withdrawed from your account");
+
+                                         transArray[Transaction.tranId] = new Transaction(currentAccount , "Deposit of:" +withdrawAmount+ "\n"  );
+                                         tranId++;
+
                                      }
                                      
                                      else{
@@ -125,14 +132,15 @@ public class BankMain {
 
                                 case 4:
                                 	//List of transactions
-                                                  
+                                    println(Transaction.ToString(currentAccount));
                                     break;
 
                                 case 5:
                                 	//Transfer to another account                           	
                                 	
                                 	boolean answer2 = Account.transferMoney(currentAccount);
-                                	break;
+
+                                    break;
 
                                 case 6:
                                     break inMainMenu;

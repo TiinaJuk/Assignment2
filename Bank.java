@@ -27,7 +27,7 @@ public class Bank {
        */
 
 	public static User getUserArray(String name){
-		
+
 		for(int i=0; i<id;i++){
 			if (userArray[i].getUsername().equals(name)) {
 				return userArray[i];	
@@ -38,7 +38,11 @@ public class Bank {
 		}		
 		return null;
 		}
-	
+	public static User getUserArrayByID(int currentID){
+		return userArray[currentID];
+	}
+
+
 	public static void setUserArray(int n, User tmp){
 		userArray[n] = tmp;
 		}
@@ -150,8 +154,9 @@ public class Bank {
 
 			if(ans == true){
 				userArray[id] = new User(name,password);
-				transArray[id] = new Transaction(  userArray[id].getAccount() , "New user created"  );
-				
+				transArray[Transaction.tranId] = new Transaction(userArray[id].getAccount() , "New user created" );
+
+				Transaction.tranId++;
 
 
 				println("New user succesfully created!");

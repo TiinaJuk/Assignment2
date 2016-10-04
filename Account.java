@@ -1,8 +1,10 @@
 package dit948;
 
+import static dit948.Bank.id;
 import static dit948.SimpleIO.println;
 import static dit948.SimpleIO.readDouble;
 import static dit948.SimpleIO.readString;
+import static dit948.Transaction.tranId;
 
 public class Account {
 
@@ -21,7 +23,7 @@ public class Account {
 
 
 	public Account(double amount) {
-		accountId = Bank.id;
+		accountId = id;
 		this.amount = amount;
 	}
 
@@ -58,6 +60,7 @@ public class Account {
 
 	public boolean deposit(double addAmount){
 		amount = amount + addAmount;
+
 		return true;
 	}
 	/**
@@ -88,6 +91,15 @@ public class Account {
 		//withdraw from Useraccount
 		currentAccount.withdraw(transferAmount);
 		println("An amount of: " +transferAmount+ "has been transfered");
+
+		Bank.transArray[tranId] = new Transaction(currentAccount , "A transfer of:" +transferAmount+ "to user" + receptantUsername+"\n"  );
+
+		tranId++;
+
+		Bank.transArray[tranId] = new Transaction(receptanterAccount , "A deposite by transfer of:" +transferAmount + "\n"  );
+
+		tranId++;
+
 		return true;
 	}
 
