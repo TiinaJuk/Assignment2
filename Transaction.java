@@ -23,14 +23,14 @@ public class Transaction {
 	 */
 	public Account getAccount() {
 		// code here
-		return null;
+		return account;
 	}
+
 	/**
 	 * String representation of a transaction
 	 */
 	public String toString() {
-		//code here			
-		return null;
+		return type;
 	}
 
 }

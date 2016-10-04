@@ -4,8 +4,6 @@ import static dit948.SimpleIO.*;
 
 //List of transactions
 //Class transaction
-//Username list
-
 
 
 /**
@@ -151,7 +149,7 @@ public class BankMain {
                    break;
                    
                 case 3:
-                	Bank.toString(); 
+                	println(Bank.ToString());
 
                   break;
 

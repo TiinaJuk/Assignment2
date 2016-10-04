@@ -20,6 +20,7 @@ public class User {
 		this.name = name;
 		this.password = password;
 		this.account = new Account(0);
+
 	}
 
 
@@ -37,6 +38,7 @@ public class User {
 	 * @return name
 	 */
 	public String getUsername() {
+
 		return this.name;
 	}
 

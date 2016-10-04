@@ -1,6 +1,5 @@
 package dit948;
 
-import static dit948.Bank.id;
 import static dit948.SimpleIO.println;
 import static dit948.SimpleIO.readDouble;
 import static dit948.SimpleIO.readString;
@@ -22,7 +21,7 @@ public class Account {
 
 
 	public Account(double amount) {
-		accountId = id;
+		accountId = Bank.id;
 		this.amount = amount;
 	}
 

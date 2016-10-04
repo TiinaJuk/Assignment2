@@ -62,12 +62,13 @@ public class Bank {
 	 * online bank
 	 */
 
-	public static String toString() {
-		String list = null;
+	public static String ToString() {
+		String list = "The names are:"+"\n";
 		
-		for(int i = 0; i > id; i++) {
+		for(int i = 0; i < id; i++) {
 			list = list + userArray[i].getUsername() + "\n";
-		}			
+
+		}
 		return list;
 	}
 
@@ -132,6 +133,7 @@ public class Bank {
 	 * use the chosen username and password to create a new user and add it to
 	 * the array of users. Hint: Each user must be assigned a new id.
 	 */
+
 	public static void addUser() {
 		String name;
 		String password;
@@ -148,7 +150,7 @@ public class Bank {
 
 			if(ans == true){
 				userArray[id] = new User(name,password);
-
+				transArray[id] = new Transaction(  userArray[id].getAccount() , "New user created"  );
 				
 
 
